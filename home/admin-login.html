@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero login">
+  <div class="login-box">
+    <div class="avatar"></div>
+    <h3>ADMIN</h3>
+
+    <input type="email" id="adminEmail" placeholder="ENTER YOUR MAIL ID">
+    <input type="password" id="adminPass" placeholder="ENTER YOUR PASSWORD">
+
+    <button class="enter-btn" onclick="checkLogin()">ENTER</button>
+  </div>
+</div>
+
+<script>
+function checkLogin() {
+    const email = document.getElementById('adminEmail').value;
+    const pass = document.getElementById('adminPass').value;
+
+    if (email === "adminwe4@gmail.com" && pass === "pmpm@csed") {
+        sessionStorage.setItem("isAdminLoggedIn", "true");
+        
+        // FIXED PATH: Go up one level (..) then into the admin folder
+        window.location.href = "../admin/admin-page.html"; 
+    } else {
+        alert("Something went wrong! You entered the wrong password or email.");
+    }
+}
+</script>
+
+</body>
+</html>

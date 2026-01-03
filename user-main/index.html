@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>E-Waste Awareness</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">E-Waste Awareness</h1>
+      <nav class="main-nav">
+        <a href="#Upload">Upload</a>
+        <a href="#types">Types</a>
+        <a href="#disposal">Disposal</a>
+        <a href="#informations">Information</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="hero">
+      <h2>Learn how to dispose electronics safely</h2>
+      <p>Simple steps, interactive visuals and a quick quiz — learn and spread awareness!</p>
+      <a class="btn" href="#types">Get started</a>
+    </section>
+    
+    <!-- Upload Section -->
+<section id="Upload" class="upload-section">
+      <h3 class="section-title">Upload Your E-Waste</h3>
+      <p class="section-sub">Share your e-waste image and get safe disposal guidance</p>
+
+      <div class="upload-card">
+        <label class="upload-area">
+          <input type="file" id="imageInput" accept="image/*" >
+          <div class="upload-icon">📷</div>
+          <p>Click to upload image</p>
+          <span>JPG / PNG</span>
+        </label>
+
+        <textarea id="description" placeholder="Describe the item (eg: old mobile, damaged battery)"></textarea>
+
+        <button class="btn upload-btn" onclick="handleUpload()">Analyze E-Waste</button>
+      </div>
+
+      <div id="previewSection" class="preview-card hidden">
+        <img id="previewImage">
+        <div class="suggestion-box">
+          <h4>♻ Disposal Suggestion</h4>
+          <p id="suggestionText"></p>
+        </div>
+      </div>
+      <span class="badge green" style="display:none" id="techBadge">Technician Replied</span>
+
+      <div class="tech-response" style="display:none">
+  <p><strong>Technician Suggestion:</strong>
+    <span class="tech-suggestion"></span>
+  </p>
+  
+    <span class="tech-phone"></span>
+  </p>
+</div>
+
+      
+    </section>
+
+
+    <section id="types" class="types-section">
+      <h3 class="section-title">Types of E-Waste</h3>
+      <p class="section-sub">Hover or click to explore different categories</p>
+
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="emoji">📱</span>
+              <h4>Mobile Phones</h4>
+            </div>
+            <div class="card-back">
+              <p>Mobile phones are one of the largest contributors due to frequent upgrades.</p>
+              <div class="progress-box">
+                <span>Contribution</span>
+                <div class="progress"><div class="progress-fill" style="--value:70%"></div></div>
+                <small>70%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="emoji">💻</span>
+              <h4>Laptops</h4>
+            </div>
+            <div class="card-back">
+              <p>Laptops contain batteries and circuit boards that must be recycled safely.</p>
+              <div class="progress-box">
+                <span>Contribution</span>
+                <div class="progress"><div class="progress-fill" style="--value:60%"></div></div>
+                <small>60%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="emoji">📺</span>
+              <h4>TVs & Monitors</h4>
+            </div>
+            <div class="card-back">
+              <p>Old TVs and monitors may contain lead and hazardous materials.</p>
+              <div class="progress-box">
+                <span>Contribution</span>
+                <div class="progress"><div class="progress-fill" style="--value:50%"></div></div>
+                <small>50%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="emoji">🔌</span>
+              <h4>Chargers & Cables</h4>
+            </div>
+            <div class="card-back">
+              <p>Chargers and cables contain recyclable metals like copper.</p>
+              <div class="progress-box">
+                <span>Contribution</span>
+                <div class="progress"><div class="progress-fill" style="--value:40%"></div></div>
+                <small>40%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="disposal" class="disposal-horizontal">
+  <h3 class="section-title">Safe Disposal Steps</h3>
+  <div class="horizontal-steps">
+    <div class="h-step">
+      <div class="h-circle">1</div>
+      <div class="h-box"><h4>Backup & Wipe Data</h4><p>Factory reset to protect personal data.</p></div>
+    </div>
+    <div class="h-line"></div>
+    <div class="h-step">
+      <div class="h-circle">2</div>
+      <div class="h-box"><h4>Remove Batteries</h4><p>Keep batteries separate for recycling.</p></div>
+    </div>
+    <div class="h-line"></div>
+    <div class="h-step">
+      <div class="h-circle">3</div>
+      <div class="h-box"><h4>Reuse or Donate</h4><p>Give working devices to those in need.</p></div>
+    </div>
+    <div class="h-line"></div>
+    <div class="h-step">
+      <div class="h-circle">4</div>
+      <div class="h-box"><h4>Authorized Recycling</h4><p>Use government-approved recycling centers.</p></div>
+    </div>
+    <div class="h-line"></div>
+    <div class="h-step">
+      <div class="h-circle">5</div>
+      <div class="h-box"><h4>Follow Regulations</h4><p>Check local guidelines for safety.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="informations" class="infographics-adv">
+  <h3 class="section-title">Interactive Infographics</h3>
+  <p class="section-sub">Click each card to explore more</p>
+
+  <div class="info-grid">
+    <div class="info-item" onclick="toggleInfo(this)">
+      <div class="info-front">
+        <span class="info-icon">🔋</span>
+        <h4>Battery Recycling</h4>
+      </div>
+      <div class="info-back">
+        <p>Batteries contain hazardous chemicals and must be disposed only at authorized battery collection points.</p>
+      </div>
+    </div>
+
+    <div class="info-item" onclick="toggleInfo(this)">
+      <div class="info-front">
+        <span class="info-icon">♻️</span>
+        <h4>Reuse & Donate</h4>
+      </div>
+      <div class="info-back">
+        <p>Working electronics can be reused or donated to reduce environmental impact.</p>
+      </div>
+    </div>
+
+    <div class="info-item" onclick="toggleInfo(this)">
+      <div class="info-front">
+        <span class="info-icon">⚠️</span>
+        <h4>Hazardous Waste</h4>
+      </div>
+      <div class="info-back">
+        <p>E-waste contains toxic materials like lead and mercury which harm soil and water.</p>
+      </div>
+    </div>
+
+    <div class="info-item" onclick="toggleInfo(this)">
+      <div class="info-front">
+        <span class="info-icon">🔐</span>
+        <h4>Data Security</h4>
+      </div>
+      <div class="info-back">
+        <p>Always wipe personal data before disposing electronic devices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="quiz" class="quiz-adv">
+      <h3 class="section-title">E-Waste Awareness Quiz</h3>
+      <div class="quiz-card">
+        <div class="quiz-progress"><div id="quizProgress"></div></div>
+        <h4 id="quizQuestion"></h4>
+        <div id="quizOptions" class="quiz-options"></div>
+        <button id="nextBtn" class="quiz-btn">Next</button>
+        <p id="quizCounter"></p>
+      </div>
+    </section>
+
+    <section class="feedback-container">
+      <h3>How was your experience?</h3>
+      <div class="star-rating">
+        <span class="star" data-value="1" onclick="handleStarClick(1)">&#9733;</span>
+        <span class="star" data-value="2" onclick="handleStarClick(2)">&#9733;</span>
+        <span class="star" data-value="3" onclick="handleStarClick(3)">&#9733;</span>
+        <span class="star" data-value="4" onclick="handleStarClick(4)">&#9733;</span>
+        <span class="star" data-value="5" onclick="handleStarClick(5)">&#9733;</span>
+      </div>
+      <p id="rating-status">Select a rating</p>
+      <textarea id="feedbackText" placeholder="What can we improve?"></textarea>
+      <button id="submitFeedback" class="final-btn">Submit Feedback</button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© E-Waste Awareness • Make tech sustainable</p>
+    </div>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

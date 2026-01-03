@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Technician Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero login">
+  <div class="login-box">
+
+    <div class="avatar"></div>
+    <h3>TECHNICIAN</h3>
+
+    <input type="email" id="techEmail" placeholder="ENTER YOUR MAIL ID">
+    <input type="password" id="techPass" placeholder="ENTER YOUR PASSWORD">
+
+    <!-- ✅ onclick added -->
+    <button class="enter-btn" onclick="checkTechnicianLogin()">ENTER</button>
+
+  </div>
+</div>
+<script>
+
+function checkTechnicianLogin() {
+
+  const email = document.getElementById("techEmail").value;
+  const pass  = document.getElementById("techPass").value;
+
+  if (email === "tech@gmail.com" && pass === "tech@123") {
+
+    sessionStorage.setItem("isTechnicianLoggedIn", "true");
+
+    // ✅ correct file name
+    window.location.href = "../technician/tech.html";
+
+  } else {
+    alert("Invalid Technician Login ❌");
+  }
+}
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    // Security check: If not logged in, go out of admin (..) and into home folder
+    if (sessionStorage.getItem("isAdminLoggedIn") !== "true") {
+        window.location.href = "../home/admin-login.html"; 
+    }
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | E-Waste</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<aside class="sidebar">
+  <h2>♻ Admin</h2>
+  <ul>
+    <li class="active" data-key="dashboard">Dashboard</li>
+<li data-key="uploads">Uploads</li>
+<li data-key="reports">Reports</li>
+
+<li data-key="settings">Settings</li>
+ <li data-key="techSolved">Technician Solved</li>
+  </ul>
+</aside>
+
+<main class="main">
+  <section id="dashboard-view">
+ <h1 data-key="adminDashboard">Admin Dashboard</h1>
+
+    <div class="stats">
+      <div class="card">📦 Total Uploads <span id="total">0</span></div>
+    </div>
+  </section>
+
+  <section id="uploads-view" style="display:none;">
+   <h2 data-key="userUploads">User Uploads</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            
+            <th>User Info</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Rating</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="uploadTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="reports-view" style="display:none;">
+  <h2 data-key="reportsTitle">Reports & Feedback</h2>
+
+<!-- Overview Stats -->
+<div class="stats">
+  <div class="card">📦 Total Uploads <span id="totalUploads">0</span></div>
+  <div class="card">⭐ Average Rating <span id="avgRating">0</span></div>
+  <div class="card">👤 Total Users <span id="totalUsers">0</span></div>
+</div>
+
+<!-- Category Bar Chart -->
+<div class="table-container" style="margin-bottom:30px;">
+  <canvas id="categoryChart" style="height:250px;"></canvas>
+</div>
+
+
+<!-- Feedback Table -->
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>Category</th>
+        <th>Rating</th>
+        <th>Comment</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="reportTable"></tbody>
+  </table>
+</div>
+
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </section>
+
+  <section id="techSolved-view" style="display:none;">
+  <h2>👨‍🔧 Technician Solved</h2>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Technician Reply</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="techSolvedTable"></tbody>
+    </table>
+  </div>
+</section>
+
+  <section id="settings-view" style="display:none;">
+ <h2 data-key="settingsTitle">Settings</h2>
+
+  <div class="settings-card">
+    <h3 class="setting-title">
+  <i class="fa-solid fa-palette"></i>
+  <span data-key="theme">Theme</span>
+</h3>
+
+    <button onclick="setTheme('green')">Green</button>
+    <button onclick="setTheme('dark')">Dark</button>
+    <button onclick="setTheme('light')">Light</button>
+  </div>
+
+  <div class="settings-card">
+    <h3>🔤 Font Style</h3>
+    <select id="fontSelect">
+  <option value="Poppins">Poppins</option>
+  <option value="Roboto">Roboto</option>
+  <option value="Arial">Arial</option>
+    <option value="Georgia">Georgia</option>
+</select>
+
+  </div>
+
+  <div class="settings-card">
+    <h3>☀ Brightness</h3>
+    <input type="range" min="70" max="120" value="100" oninput="setBrightness(this.value)">
+  </div>
+
+  <div class="settings-card">
+    <h3>✨ Animations</h3>
+    <label>
+      <input type="checkbox" checked onchange="toggleAnimation(this.checked)">
+      Enable animations
+    </label>
+  </div>
+
+  <div class="settings-card">
+  <h3 class="setting-title">
+  <i class="fa-solid fa-bell"></i>
+  <span data-key="notifications">Notifications</span>
+</h3>
+
+
+  <label class="switch">
+    <input type="checkbox" checked onchange="toggleNotifications(this.checked)">
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="settings-card">
+  <h3 class="setting-title">
+  <i class="fa-solid fa-language"></i>
+  <span data-key="language">Language</span>
+</h3>
+
+  <select onchange="setLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="ta">தமிழ்</option>
+  </select>
+</div>
+
+<div class="settings-card">
+ <h3 class="setting-title">
+  <i class="fa-solid fa-table-columns"></i>
+  <span data-key="layout">Layout</span>
+</h3>
+
+  <button onclick="setLayout('compact')">Compact</button>
+  <button onclick="setLayout('spacious')">Spacious</button>
+</div>
+
+
+
+<div class="settings-card danger">
+  <h3 class="setting-title">
+  <i class="fa-solid fa-right-from-bracket"></i>
+  <span data-key="logout">Logout</span>
+</h3>
+
+  <button onclick="logoutAdmin()" class="danger-btn">Logout</button>
+</div>
+
+</section>
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="admin-script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero login">
+  <div class="login-box">
+    <div class="avatar"></div>
+    <h3>USER</h3>
+
+    <input type="text" id="userName" placeholder="ENTER YOUR NAME" required>
+    <input type="email" id="userEmail" placeholder="ENTER YOUR MAIL ID" required>
+
+    <button class="enter-btn" id="loginBtn">ENTER</button>
+  </div>
+</div>
+
+<script>
+  const loginBtn = document.getElementById("loginBtn");
+
+  loginBtn.addEventListener("click", function(e) {
+    const nameValue = document.getElementById("userName").value;
+    const emailValue = document.getElementById("userEmail").value; // Capture the email
+
+    if (nameValue === "" || emailValue === "") {
+      alert("Please enter both your name and email.");
+      return;
+    }
+
+    // Save BOTH values so the technician can see them later
+    localStorage.setItem("username", nameValue);
+    localStorage.setItem("userEmail", emailValue); 
+
+    window.location.href = "../user-main/index.html";
+  });
+</script>
+
+</body>
+</html>

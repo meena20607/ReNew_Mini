@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("Desktop - 1.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* HOME IMAGE */
+.home img {
+  width: 100%;
+  max-width: 1440px;
+}
+
+/* TREE TEXT LINKS */
+.tree-links {
+  position: absolute;
+  top: 60%;
+  text-align: center;
+  z-index: 3;
+}
+
+.tree-links a {
+  display: block;
+  margin: 8px 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* BLUR BACKGROUND */
+.login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(12px);
+  z-index: 1;
+}
+
+/* LOGIN BOX */
+.login-box {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* AVATAR */
+.avatar {
+  width: 90px;
+  height: 90px;
+  background: #e6e6e6;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+/* INPUTS STACKED */
+.login-box input {
+  display: block;
+  width: 300px;
+  padding: 10px;
+  margin: 10px auto;
+  border: none;
+}
+
+/* BUTTON */
+.enter-btn {
+  margin-top: 15px;
+  padding: 10px 35px;
+  border-radius: 20px;
+  border: none;
+  background: #e63946;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.enter-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff4d4d;
+}
+/* INVISIBLE CLICK AREAS */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+}
+
+/* Adjust positions carefully (no visual change) */
+.hotspot.user {
+  width: 120px;
+  height: 40px;
+  top: 58%;
+  left: 47%;
+}
+
+.hotspot.admin {
+  width: 120px;
+  height: 40px;
+  top: 63%;
+  left: 47%;
+}
+
+.hotspot.technician {
+  width: 120px;
+  height: 40px;
+  top: 68%;
+  left: 47%;
+}
+/* =========================
+   PAGE FADE
+========================= */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+
+/* =========================
+   FALLING LEAVES – SMOOTH & NATURAL
+========================= */
+.leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.leaves span {
+  position: absolute;
+  top: -10%;
+  width: 12px;
+  height: 12px;
+  background: rgba(76, 175, 80, 0.5);
+  border-radius: 0 70% 70% 70%;
+  animation: fall linear infinite, sway ease-in-out infinite;
+}
+
+/* Individual leaf tuning */
+.leaves span:nth-child(1) { left: 8%;  animation-duration: 14s, 4s; }
+.leaves span:nth-child(2) { left: 20%; width: 10px; height: 10px; animation-duration: 18s, 6s; }
+.leaves span:nth-child(3) { left: 35%; animation-duration: 16s, 5s; }
+.leaves span:nth-child(4) { left: 50%; width: 14px; height: 14px; animation-duration: 20s, 7s; }
+.leaves span:nth-child(5) { left: 65%; animation-duration: 17s, 6s; }
+.leaves span:nth-child(6) { left: 78%; width: 11px; height: 11px; animation-duration: 19s, 5s; }
+.leaves span:nth-child(7) { left: 90%; animation-duration: 15s, 4s; }
+
+/* Falling motion */
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: rotate(0deg);
+    opacity: 0.6;
+  }
+  100% {
+    top: 110%;
+    transform: rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+/* Wind sway */
+@keyframes sway {
+  0%, 100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 25px;
+  }
+}
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Technician Dashboard</title>
+<link rel="stylesheet" href="tech.css">
+
+<script>
+  if(sessionStorage.getItem("isTechnicianLoggedIn") !== "true"){
+    window.location.href = "../home/technician-login.html";
+  }
+</script>
+</head>
+
+<body>
+
+<h1>🧑‍🔧 Technician Dashboard</h1>
+
+<table class="tech-table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>User</th>
+      <th>Category</th>
+      <th>Problem</th>
+      <th>Suggestion</th>
+    </tr>
+  </thead>
+  <tbody id="techTable"></tbody>
+</table>
+
+<script src="tech.js"></script>
+</body>
+</html>

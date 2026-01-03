@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ReNew - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in">
+
+<div class="hero home">
+
+  <!-- Falling leaves -->
+  <div class="leaves">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Invisible clickable areas -->
+  <a href="user-login.html" class="hotspot user"></a>
+  <a href="admin-login.html" class="hotspot admin"></a>
+  <a href="technician-login.html" class="hotspot technician"></a>
+
+</div>
+
+<script>
+  // Smooth page transition
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400);
+    });
+  });
+</script>
+
+</body>
+</html>
